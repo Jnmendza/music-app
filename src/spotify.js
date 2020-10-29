@@ -3,8 +3,9 @@
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 const redirectUri = 'http://localhost:3000/';
-const clientId = '8b11a84dca0c48f6bb7f57404c6ede56';
+const clientId = process.env.REACT_APP_CLIENT_ID;
 
+// what spotify allows you to views and actions you are allowed to perform
 const scopes = [
     "user-read-currently-playing",
     "user-read-recently-played",
@@ -13,6 +14,7 @@ const scopes = [
     "user-modify-playback-state",
 ];
 
+// stripes the token from the long url by splicing the string and reducing it to just the token 
 export const getTokenFromUrl = () => {
     return window.location.hash
     .substring(1)
